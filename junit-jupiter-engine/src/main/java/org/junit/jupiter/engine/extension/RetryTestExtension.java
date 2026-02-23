@@ -72,8 +72,7 @@ class RetryTestExtension implements TestTemplateInvocationContextProvider {
 		return delayMs;
 	}
 
-	private RetryTestDisplayNameFormatter displayNameFormatter(RetryTest retryTest, Method method,
-			String displayName) {
+	private RetryTestDisplayNameFormatter displayNameFormatter(RetryTest retryTest, Method method, String displayName) {
 		String pattern = Preconditions.notBlank(retryTest.name().strip(),
 			() -> "Configuration error: @RetryTest on method [%s] must be declared with a non-empty name.".formatted(
 				method));
