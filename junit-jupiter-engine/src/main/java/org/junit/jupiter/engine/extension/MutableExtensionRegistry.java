@@ -56,6 +56,7 @@ public class MutableExtensionRegistry implements ExtensionRegistry, ExtensionReg
 		new AutoCloseExtension(), //
 		new TimeoutExtension(), //
 		new RepeatedTestExtension(), //
+		new SnapshotExtension(), //
 		new TestInfoParameterResolver(), //
 		new TestReporterParameterResolver() //
 	);
