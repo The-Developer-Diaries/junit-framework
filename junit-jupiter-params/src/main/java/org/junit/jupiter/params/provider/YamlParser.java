@@ -69,7 +69,7 @@ final class YamlParser {
 		}
 		String line = lines[lineIndex];
 		String trimmed = line.stripLeading();
-		if (trimmed.startsWith("- ") || trimmed.equals("-")) {
+		if (trimmed.startsWith("- ") || "-".equals(trimmed)) {
 			return parseBlockSequence(indentOf(line));
 		}
 		if (trimmed.contains(":")) {
@@ -105,7 +105,7 @@ final class YamlParser {
 					int nextIndent = indentOf(nextLine);
 					if (nextIndent > indent) {
 						String nextTrimmed = nextLine.stripLeading();
-						if (nextTrimmed.startsWith("- ") || nextTrimmed.equals("-")) {
+						if (nextTrimmed.startsWith("- ") || "-".equals(nextTrimmed)) {
 							list.add(parseBlockSequence(nextIndent));
 						}
 						else if (nextTrimmed.contains(":")) {
@@ -259,18 +259,19 @@ final class YamlParser {
 	}
 
 	static @Nullable Object parseScalar(String value) {
-		if (value.isEmpty() || "null".equals(value) || "~".equals(value)) {
-			return null;
-		}
-		if ("true".equals(value)) {
-			return Boolean.TRUE;
-		}
-		if ("false".equals(value)) {
-			return Boolean.FALSE;
+		switch (value) {
+			case "", "null", "~" -> {
+				return null;
+			}
+			case "true" -> {
+				return true;
+			}
+			case "false" -> {
+				return false;
+			}
 		}
 		// Handle quoted strings
-		if ((value.startsWith("\"") && value.endsWith("\""))
-				|| (value.startsWith("'") && value.endsWith("'"))) {
+		if ((value.startsWith("\"") && value.endsWith("\"")) || (value.startsWith("'") && value.endsWith("'"))) {
 			return value.substring(1, value.length() - 1);
 		}
 		// Try integer
@@ -321,8 +322,7 @@ final class YamlParser {
 	}
 
 	private static String unquoteIfNeeded(String value) {
-		if ((value.startsWith("\"") && value.endsWith("\""))
-				|| (value.startsWith("'") && value.endsWith("'"))) {
+		if ((value.startsWith("\"") && value.endsWith("\"")) || (value.startsWith("'") && value.endsWith("'"))) {
 			return value.substring(1, value.length() - 1);
 		}
 		return value;
