@@ -43,10 +43,9 @@ class JsonFileArgumentsProvider extends AnnotationBasedArgumentsProvider<JsonFil
 
 		Charset charset = getCharsetFrom(jsonFileSource);
 
-		Stream<String> resources = Arrays.stream(jsonFileSource.resources())
-				.map(resource -> readClasspathResource(context.getRequiredTestClass(), resource, charset));
-		Stream<String> files = Arrays.stream(jsonFileSource.files())
-				.map(file -> readFile(file, charset));
+		Stream<String> resources = Arrays.stream(jsonFileSource.resources()).map(
+			resource -> readClasspathResource(context.getRequiredTestClass(), resource, charset));
+		Stream<String> files = Arrays.stream(jsonFileSource.files()).map(file -> readFile(file, charset));
 
 		List<String> sources = Stream.concat(resources, files).toList();
 		Preconditions.notEmpty(sources, "Resources or files must not be empty");
@@ -88,9 +87,8 @@ class JsonFileArgumentsProvider extends AnnotationBasedArgumentsProvider<JsonFil
 	private static Stream<Arguments> parseJsonSource(String jsonContent) {
 		Object parsed = JsonParser.parse(jsonContent);
 		if (!(parsed instanceof List<?> array)) {
-			throw new JUnitException(
-				"@JsonFileSource requires a top-level JSON array, but found: "
-						+ (parsed == null ? "null" : parsed.getClass().getSimpleName()));
+			throw new JUnitException("@JsonFileSource requires a top-level JSON array, but found: "
+					+ (parsed == null ? "null" : parsed.getClass().getSimpleName()));
 		}
 		return array.stream().map(JsonFileArgumentsProvider::toArguments);
 	}

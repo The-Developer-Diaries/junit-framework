@@ -43,10 +43,9 @@ class YamlFileArgumentsProvider extends AnnotationBasedArgumentsProvider<YamlFil
 
 		Charset charset = getCharsetFrom(yamlFileSource);
 
-		Stream<String> resources = Arrays.stream(yamlFileSource.resources())
-				.map(resource -> readClasspathResource(context.getRequiredTestClass(), resource, charset));
-		Stream<String> files = Arrays.stream(yamlFileSource.files())
-				.map(file -> readFile(file, charset));
+		Stream<String> resources = Arrays.stream(yamlFileSource.resources()).map(
+			resource -> readClasspathResource(context.getRequiredTestClass(), resource, charset));
+		Stream<String> files = Arrays.stream(yamlFileSource.files()).map(file -> readFile(file, charset));
 
 		List<String> sources = Stream.concat(resources, files).toList();
 		Preconditions.notEmpty(sources, "Resources or files must not be empty");
@@ -88,9 +87,8 @@ class YamlFileArgumentsProvider extends AnnotationBasedArgumentsProvider<YamlFil
 	private static Stream<Arguments> parseYamlSource(String yamlContent) {
 		Object parsed = YamlParser.parse(yamlContent);
 		if (!(parsed instanceof List<?> sequence)) {
-			throw new JUnitException(
-				"@YamlFileSource requires a top-level YAML sequence, but found: "
-						+ (parsed == null ? "null" : parsed.getClass().getSimpleName()));
+			throw new JUnitException("@YamlFileSource requires a top-level YAML sequence, but found: "
+					+ (parsed == null ? "null" : parsed.getClass().getSimpleName()));
 		}
 		return sequence.stream().map(YamlFileArgumentsProvider::toArguments);
 	}
