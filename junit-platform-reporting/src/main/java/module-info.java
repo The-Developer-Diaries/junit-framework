@@ -25,6 +25,7 @@ module org.junit.platform.reporting {
 	requires org.opentest4j.reporting.tooling.spi;
 
 	// exports org.junit.platform.reporting; empty package
+	exports org.junit.platform.reporting.html;
 	exports org.junit.platform.reporting.legacy;
 	exports org.junit.platform.reporting.legacy.xml;
 	exports org.junit.platform.reporting.open.xml;
