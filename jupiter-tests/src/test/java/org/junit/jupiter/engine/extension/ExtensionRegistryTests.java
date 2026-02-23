@@ -41,7 +41,7 @@ import org.junit.platform.commons.util.ClassNamePatternFilterUtils;
  */
 class ExtensionRegistryTests {
 
-	private static final int NUM_CORE_EXTENSIONS = 7;
+	private static final int NUM_CORE_EXTENSIONS = 8;
 	private static final int NUM_DEMO_EXTENSIONS = 2;
 
 	private final JupiterConfiguration configuration = mock();
@@ -244,7 +244,7 @@ class ExtensionRegistryTests {
 		assertEquals(3, countExtensions(registry, ParameterResolver.class));
 		assertEquals(1, countExtensions(registry, ExecutionCondition.class));
 		assertEquals(1, countExtensions(registry, TestTemplateInvocationContextProvider.class));
-		assertEquals(1, countExtensions(registry, InvocationInterceptor.class));
+		assertEquals(2, countExtensions(registry, InvocationInterceptor.class));
 	}
 
 	private static Predicate<Class<? extends Extension>> extensionFilter(String includes, String excludes) {
