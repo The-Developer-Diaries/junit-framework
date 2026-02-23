@@ -10,12 +10,15 @@
 
 package org.junit.jupiter.api;
 
+import static org.apiguardian.api.API.Status.EXPERIMENTAL;
 import static org.apiguardian.api.API.Status.STABLE;
 
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.function.BooleanSupplier;
 import java.util.function.Supplier;
@@ -3739,6 +3742,439 @@ public class Assertions {
 	public static <T> T assertInstanceOf(Class<T> expectedType, @Nullable Object actualValue,
 			Supplier<@Nullable String> messageSupplier) {
 		return AssertInstanceOf.assertInstanceOf(expectedType, actualValue, messageSupplier);
+	}
+
+	// --- assertContains (String) ---------------------------------------------
+
+	/**
+	 * <em>Assert</em> that {@code text} contains {@code substring}.
+	 * @since 6.1
+	 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertContains(String text, String substring) {
+		AssertContains.assertContains(text, substring);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertContains(String text, String substring, @Nullable String message) {
+		AssertContains.assertContains(text, substring, message);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertContains(String text, String substring, Supplier<@Nullable String> messageSupplier) {
+		AssertContains.assertContains(text, substring, messageSupplier);
+	}
+
+	// --- assertContains (Collection element) ---------------------------------
+
+	/**
+	 * <em>Assert</em> that {@code collection} contains {@code element}.
+	 * @since 6.1
+	 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertContains(Collection<?> collection, @Nullable Object element) {
+		AssertContains.assertContains(collection, element);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertContains(Collection<?> collection, @Nullable Object element, @Nullable String message) {
+		AssertContains.assertContains(collection, element, message);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertContains(Collection<?> collection, @Nullable Object element,
+			Supplier<@Nullable String> messageSupplier) {
+		AssertContains.assertContains(collection, element, messageSupplier);
+	}
+
+	// --- assertContains (Array element) --------------------------------------
+
+	/**
+	 * <em>Assert</em> that {@code array} contains {@code element}.
+	 * @since 6.1
+	 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertContains(Object[] array, @Nullable Object element) {
+		AssertContains.assertContains(array, element);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertContains(Object[] array, @Nullable Object element, @Nullable String message) {
+		AssertContains.assertContains(array, element, message);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertContains(Object[] array, @Nullable Object element,
+			Supplier<@Nullable String> messageSupplier) {
+		AssertContains.assertContains(array, element, messageSupplier);
+	}
+
+	// --- assertContainsAll (Collection ⊇ Collection) -------------------------
+
+	/**
+	 * <em>Assert</em> that {@code collection} contains all elements in {@code subset}.
+	 * @since 6.1
+	 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertContainsAll(Collection<?> collection, Collection<?> subset) {
+		AssertContains.assertContainsAll(collection, subset);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertContainsAll(Collection<?> collection, Collection<?> subset, @Nullable String message) {
+		AssertContains.assertContainsAll(collection, subset, message);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertContainsAll(Collection<?> collection, Collection<?> subset,
+			Supplier<@Nullable String> messageSupplier) {
+		AssertContains.assertContainsAll(collection, subset, messageSupplier);
+	}
+
+	// --- assertContainsAll (Collection ⊇ Array) ------------------------------
+
+	/**
+	 * <em>Assert</em> that {@code collection} contains all elements in {@code subset} array.
+	 * @since 6.1
+	 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertContainsAll(Collection<?> collection, Object[] subset) {
+		AssertContains.assertContainsAll(collection, subset);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertContainsAll(Collection<?> collection, Object[] subset, @Nullable String message) {
+		AssertContains.assertContainsAll(collection, subset, message);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertContainsAll(Collection<?> collection, Object[] subset,
+			Supplier<@Nullable String> messageSupplier) {
+		AssertContains.assertContainsAll(collection, subset, messageSupplier);
+	}
+
+	// --- assertContainsAll (Array ⊇ Collection) ------------------------------
+
+	/**
+	 * <em>Assert</em> that {@code array} contains all elements in {@code subset} collection.
+	 * @since 6.1
+	 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertContainsAll(Object[] array, Collection<?> subset) {
+		AssertContains.assertContainsAll(array, subset);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertContainsAll(Object[] array, Collection<?> subset, @Nullable String message) {
+		AssertContains.assertContainsAll(array, subset, message);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertContainsAll(Object[] array, Collection<?> subset,
+			Supplier<@Nullable String> messageSupplier) {
+		AssertContains.assertContainsAll(array, subset, messageSupplier);
+	}
+
+	// --- assertContainsAll (Array ⊇ Array) -----------------------------------
+
+	/**
+	 * <em>Assert</em> that {@code array} contains all elements in {@code subset} array.
+	 * @since 6.1
+	 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertContainsAll(Object[] array, Object[] subset) {
+		AssertContains.assertContainsAll(array, subset);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertContainsAll(Object[] array, Object[] subset, @Nullable String message) {
+		AssertContains.assertContainsAll(array, subset, message);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertContainsAll(Object[] array, Object[] subset, Supplier<@Nullable String> messageSupplier) {
+		AssertContains.assertContainsAll(array, subset, messageSupplier);
+	}
+
+	// --- assertMatchesRegex --------------------------------------------------
+
+	/**
+	 * <em>Assert</em> that {@code text} matches the regular expression {@code regex}.
+	 * @since 6.1
+	 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertMatchesRegex(String text, String regex) {
+		AssertMatchesRegex.assertMatchesRegex(text, regex);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertMatchesRegex(String text, String regex, @Nullable String message) {
+		AssertMatchesRegex.assertMatchesRegex(text, regex, message);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertMatchesRegex(String text, String regex, Supplier<@Nullable String> messageSupplier) {
+		AssertMatchesRegex.assertMatchesRegex(text, regex, messageSupplier);
+	}
+
+	// --- assertDoesNotMatchRegex ---------------------------------------------
+
+	/**
+	 * <em>Assert</em> that {@code text} does <em>not</em> match {@code regex}.
+	 * @since 6.1
+	 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertDoesNotMatchRegex(String text, String regex) {
+		AssertMatchesRegex.assertDoesNotMatchRegex(text, regex);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertDoesNotMatchRegex(String text, String regex, @Nullable String message) {
+		AssertMatchesRegex.assertDoesNotMatchRegex(text, regex, message);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertDoesNotMatchRegex(String text, String regex, Supplier<@Nullable String> messageSupplier) {
+		AssertMatchesRegex.assertDoesNotMatchRegex(text, regex, messageSupplier);
+	}
+
+	// --- assertHasSize (Collection) ------------------------------------------
+
+	/**
+	 * <em>Assert</em> that {@code collection} has the given {@code expectedSize}.
+	 * @since 6.1
+	 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertHasSize(Collection<?> collection, int expectedSize) {
+		AssertHasSize.assertHasSize(collection, expectedSize);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertHasSize(Collection<?> collection, int expectedSize, @Nullable String message) {
+		AssertHasSize.assertHasSize(collection, expectedSize, message);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertHasSize(Collection<?> collection, int expectedSize,
+			Supplier<@Nullable String> messageSupplier) {
+		AssertHasSize.assertHasSize(collection, expectedSize, messageSupplier);
+	}
+
+	// --- assertHasSize (Map) -------------------------------------------------
+
+	/**
+	 * <em>Assert</em> that {@code map} has the given {@code expectedSize}.
+	 * @since 6.1
+	 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertHasSize(Map<?, ?> map, int expectedSize) {
+		AssertHasSize.assertHasSize(map, expectedSize);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertHasSize(Map<?, ?> map, int expectedSize, @Nullable String message) {
+		AssertHasSize.assertHasSize(map, expectedSize, message);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertHasSize(Map<?, ?> map, int expectedSize, Supplier<@Nullable String> messageSupplier) {
+		AssertHasSize.assertHasSize(map, expectedSize, messageSupplier);
+	}
+
+	// --- assertHasSize (String) ----------------------------------------------
+
+	/**
+	 * <em>Assert</em> that {@code string} has the given {@code expectedLength}.
+	 * @since 6.1
+	 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertHasSize(String string, int expectedLength) {
+		AssertHasSize.assertHasSize(string, expectedLength);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertHasSize(String string, int expectedLength, @Nullable String message) {
+		AssertHasSize.assertHasSize(string, expectedLength, message);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertHasSize(String string, int expectedLength, Supplier<@Nullable String> messageSupplier) {
+		AssertHasSize.assertHasSize(string, expectedLength, messageSupplier);
+	}
+
+	// --- assertHasSize (Array) -----------------------------------------------
+
+	/**
+	 * <em>Assert</em> that {@code array} has the given {@code expectedLength}.
+	 * @since 6.1
+	 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertHasSize(Object[] array, int expectedLength) {
+		AssertHasSize.assertHasSize(array, expectedLength);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertHasSize(Object[] array, int expectedLength, @Nullable String message) {
+		AssertHasSize.assertHasSize(array, expectedLength, message);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertHasSize(Object[] array, int expectedLength, Supplier<@Nullable String> messageSupplier) {
+		AssertHasSize.assertHasSize(array, expectedLength, messageSupplier);
+	}
+
+	// --- assertContainsExactlyInAnyOrder (Collection) ------------------------
+
+	/**
+	 * <em>Assert</em> that {@code actual} contains exactly the given elements, in any order.
+	 * @since 6.1
+	 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	@SafeVarargs
+	@SuppressWarnings("varargs")
+	public static <T> void assertContainsExactlyInAnyOrder(Collection<T> actual, T... expected) {
+		AssertContainsExactlyInAnyOrder.assertContainsExactlyInAnyOrder(actual, expected);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	@SafeVarargs
+	@SuppressWarnings("varargs")
+	public static <T> void assertContainsExactlyInAnyOrder(Collection<T> actual, @Nullable String message,
+			T... expected) {
+		AssertContainsExactlyInAnyOrder.assertContainsExactlyInAnyOrder(actual, message, expected);
+	}
+
+	// --- assertContainsExactlyInAnyOrder (Array) -----------------------------
+
+	/**
+	 * <em>Assert</em> that {@code actual} array contains exactly the given elements, in any order.
+	 * @since 6.1
+	 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static void assertContainsExactlyInAnyOrder(Object[] actual, Object... expected) {
+		AssertContainsExactlyInAnyOrder.assertContainsExactlyInAnyOrder(actual, expected);
+	}
+
+	// --- assertSorted (List + Comparator) ------------------------------------
+
+	/**
+	 * <em>Assert</em> that {@code list} is sorted according to {@code comparator}.
+	 * @since 6.1
+	 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static <T> void assertSorted(List<T> list, Comparator<? super T> comparator) {
+		AssertSorted.assertSorted(list, comparator);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static <T> void assertSorted(List<T> list, Comparator<? super T> comparator, @Nullable String message) {
+		AssertSorted.assertSorted(list, comparator, message);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static <T> void assertSorted(List<T> list, Comparator<? super T> comparator,
+			Supplier<@Nullable String> messageSupplier) {
+		AssertSorted.assertSorted(list, comparator, messageSupplier);
+	}
+
+	// --- assertSorted (List natural ordering) --------------------------------
+
+	/**
+	 * <em>Assert</em> that {@code list} is sorted in natural order.
+	 * @since 6.1
+	 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static <T extends Comparable<T>> void assertSorted(List<T> list) {
+		AssertSorted.assertSorted(list);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static <T extends Comparable<T>> void assertSorted(List<T> list, @Nullable String message) {
+		AssertSorted.assertSorted(list, message);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static <T extends Comparable<T>> void assertSorted(List<T> list,
+			Supplier<@Nullable String> messageSupplier) {
+		AssertSorted.assertSorted(list, messageSupplier);
+	}
+
+	// --- assertSorted (Array + Comparator) -----------------------------------
+
+	/**
+	 * <em>Assert</em> that {@code array} is sorted according to {@code comparator}.
+	 * @since 6.1
+	 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static <T> void assertSorted(T[] array, Comparator<? super T> comparator) {
+		AssertSorted.assertSorted(array, comparator);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static <T> void assertSorted(T[] array, Comparator<? super T> comparator, @Nullable String message) {
+		AssertSorted.assertSorted(array, comparator, message);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static <T> void assertSorted(T[] array, Comparator<? super T> comparator,
+			Supplier<@Nullable String> messageSupplier) {
+		AssertSorted.assertSorted(array, comparator, messageSupplier);
+	}
+
+	// --- assertSorted (Array natural ordering) -------------------------------
+
+	/**
+	 * <em>Assert</em> that {@code array} is sorted in natural order.
+	 * @since 6.1
+	 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static <T extends Comparable<T>> void assertSorted(T[] array) {
+		AssertSorted.assertSorted(array);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static <T extends Comparable<T>> void assertSorted(T[] array, @Nullable String message) {
+		AssertSorted.assertSorted(array, message);
+	}
+
+	/** @since 6.1 */
+	@API(status = EXPERIMENTAL, since = "6.1")
+	public static <T extends Comparable<T>> void assertSorted(T[] array, Supplier<@Nullable String> messageSupplier) {
+		AssertSorted.assertSorted(array, messageSupplier);
 	}
 
 }
