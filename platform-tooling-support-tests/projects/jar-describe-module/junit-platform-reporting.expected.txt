@@ -1,4 +1,5 @@
 org.junit.platform.reporting@${version} jar:file:.+/junit-platform-reporting-\d.+\.jar..module-info\.class
+exports org.junit.platform.reporting.html
 exports org.junit.platform.reporting.legacy
 exports org.junit.platform.reporting.legacy.xml
 exports org.junit.platform.reporting.open.xml
