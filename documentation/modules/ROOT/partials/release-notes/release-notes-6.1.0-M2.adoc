@@ -87,7 +87,7 @@ repository on GitHub.
   in `@ParameterizedTest` methods when `kotlin-reflect` is on the classpath. Note,
   however, that primitive-wrapper inline value classes (such as `UInt` or custom value
   classes wrapping primitives) are not yet supported.
-* The new `org.junit.jupiter.api.Constants` class now provides for constants for
+* The new `org.junit.jupiter.api.Constants` class provides constants for
   xref:running-tests/configuration-parameters.adoc[] specific to the Jupiter engine.
 
 
