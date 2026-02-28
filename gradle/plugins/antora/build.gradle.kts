@@ -10,9 +10,9 @@ dependencies {
 	constraints {
 		implementation("com.fasterxml.jackson.core:jackson-core") {
 			version {
-				require("2.15.0")
+				require("2.21.1")
 			}
-			because("Workaround for CVE-2025-52999")
+			because("Workaround for GHSA-72hv-8253-57qq")
 		}
 	}
 	implementation(libs.plugins.spring.antora.markerCoordinates)
