@@ -28,5 +28,14 @@
         'org.opentest4j.reporting:{/,}**',
       ],
     },
+    {
+      matchManagers: 'npm',
+      matchPackageNames: [
+        '@antora/assembler',
+        '@antora/html-single-extension',
+        '@antora/pdf-extension',
+      ],
+      "groupName": "@antora/assembler",
+    },
   ],
 }
