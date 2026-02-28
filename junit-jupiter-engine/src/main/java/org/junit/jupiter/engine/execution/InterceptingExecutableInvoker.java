@@ -118,6 +118,7 @@ public class InterceptingExecutableInvoker {
 		T apply(InvocationInterceptor interceptor, Invocation<T> invocation,
 				ReflectiveInvocationContext<E> invocationContext, ExtensionContext extensionContext) throws Throwable;
 
+		@SuppressWarnings("NullAway") // for JDK 26 and earlier
 		static ReflectiveInterceptorCall<Method, @Nullable Void> ofVoidMethod(VoidMethodInterceptorCall call) {
 			return (interceptorChain, invocation, invocationContext, extensionContext) -> {
 				call.apply(interceptorChain, invocation, invocationContext, extensionContext);
@@ -126,7 +127,7 @@ public class InterceptingExecutableInvoker {
 		}
 
 		interface VoidMethodInterceptorCall {
-			void apply(InvocationInterceptor interceptor, Invocation<Void> invocation,
+			void apply(InvocationInterceptor interceptor, Invocation<@Nullable Void> invocation,
 					ReflectiveInvocationContext<Method> invocationContext, ExtensionContext extensionContext)
 					throws Throwable;
 		}
